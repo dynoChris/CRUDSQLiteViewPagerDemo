@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Training Project</string>
+    <string name="first_tab">First</string>
+    <string name="second_tab">Second</string>
+    <string name="third_tab">Third</string>
+    <string name="nothing_to_show">Nothing to show</string>
+    <string name="new_item">New Item</string>
+    <string name="enter_text">Enter text</string>
+    <string name="update_item">Update Item</string>
+    <string name="update">Update</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="choose_option">Choose option</string>
+</resources>
