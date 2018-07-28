@@ -1,6 +1,5 @@
 package com.example.vadym.thetrainingproject.view;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,10 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vadym.thetrainingproject.R;
-import com.example.vadym.thetrainingproject.database.DatabaseHelper;
-import com.example.vadym.thetrainingproject.database.model.FirstItem;
-import com.example.vadym.thetrainingproject.database.model.SecondItem;
-import com.example.vadym.thetrainingproject.database.model.ThirdItem;
 import com.example.vadym.thetrainingproject.utils.OnRecyclerLongClickListener;
 import com.example.vadym.thetrainingproject.utils.ToFragmentsListener;
 import com.example.vadym.thetrainingproject.view.fragments.FirstFragment;
@@ -41,8 +36,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
     private ViewPager viewPager;
     private MyPagerAdapter pagerAdapter;
 
-    private DatabaseHelper db;
-
     private ToFragmentsListener listener;
 
     private FirstFragment firstFragment = new FirstFragment();
@@ -55,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        db = new DatabaseHelper(this);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
