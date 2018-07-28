@@ -33,6 +33,9 @@ import com.example.vadym.thetrainingproject.view.fragments.FirstFragment;
 import com.example.vadym.thetrainingproject.view.fragments.SecondFragment;
 import com.example.vadym.thetrainingproject.view.fragments.ThirdFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements OnRecyclerLongClickListener {
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -42,9 +45,9 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
 
     private ToFragmentsListener listener;
 
-    FirstFragment firstFragment = new FirstFragment();
-    SecondFragment secondFragment = new SecondFragment();
-    ThirdFragment thirdFragment = new ThirdFragment();
+    private FirstFragment firstFragment = new FirstFragment();
+    private SecondFragment secondFragment = new SecondFragment();
+    private ThirdFragment thirdFragment = new ThirdFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,10 +232,14 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
     }
 
     private class MyPagerAdapter extends FragmentPagerAdapter {
+        private List<Fragment> fragmentList = new ArrayList<>();
         private Fragment currentFragment;
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
+            fragmentList.add(new FirstFragment());
+            fragmentList.add(new SecondFragment());
+            fragmentList.add(new ThirdFragment());
         }
 
         public Fragment getCurrentFragment() {
@@ -263,20 +270,12 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
 
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return new FirstFragment();
-                case 1:
-                    return new SecondFragment();
-                case 2:
-                    return new ThirdFragment();
-            }
-            return null;
+            return fragmentList.get(position);
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return fragmentList.size();
         }
     }
 }
