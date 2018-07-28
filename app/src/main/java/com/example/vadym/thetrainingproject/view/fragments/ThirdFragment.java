@@ -95,11 +95,10 @@ public class ThirdFragment extends Fragment implements ToFragmentsListener {
     }
 
     private void toggleVisibilityView(int whichTable) {
-        if (db.getItemsCount(whichTable) > 0) {
+        if (thirdItems.size() > 0) {
             textViewEmptyNotes.setVisibility(View.GONE);
         } else {
             textViewEmptyNotes.setVisibility(View.VISIBLE);
         }
     }
-
 }

@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public Object getItem(long id, int whichTable) {
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor;
         switch (whichTable) {
             case 0:
@@ -135,30 +135,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 return thirdItems;
         }
         return null;
-    }
-
-    public int getItemsCount(int whichTable) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor;
-        int count;
-        switch (whichTable) {
-            case 0:
-                cursor = db.rawQuery("SELECT  * FROM " + FirstItem.TABLE_NAME, null);
-                count = cursor.getCount();
-                cursor.close(); db.close();
-                return count;
-            case 1:
-                cursor = db.rawQuery("SELECT  * FROM " + SecondItem.TABLE_NAME, null);
-                count = cursor.getCount();
-                cursor.close(); db.close();
-                return count;
-            case 2:
-                cursor = db.rawQuery("SELECT  * FROM " + ThirdItem.TABLE_NAME, null);
-                count = cursor.getCount();
-                cursor.close(); db.close();
-                return count;
-        }
-        return 0;
     }
 
     public long insertItem(int whichTable, String text) {
