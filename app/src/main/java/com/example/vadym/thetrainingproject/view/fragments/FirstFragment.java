@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FirstFragment extends Fragment implements ToFragmentsListener {
-    private TextView textViewEmptyNotes;
+    private TextView textViewEmptyItems;
     private RecyclerView rv;
     private AdapterRecyclerFirstItem adapter;
 
@@ -47,7 +47,7 @@ public class FirstFragment extends Fragment implements ToFragmentsListener {
         firstItems.clear();
 
         firstItems.addAll((List<FirstItem>) db.getAllItems(0));
-        textViewEmptyNotes = (TextView) v.findViewById(R.id.text_view_empty_notes);
+        textViewEmptyItems = (TextView) v.findViewById(R.id.text_view_empty_items);
 
         rv = (RecyclerView) v.findViewById(R.id.recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -96,9 +96,9 @@ public class FirstFragment extends Fragment implements ToFragmentsListener {
 
     private void toggleVisibilityView(int whichTable) {
         if (firstItems.size() > 0) {
-            textViewEmptyNotes.setVisibility(View.GONE);
+            textViewEmptyItems.setVisibility(View.GONE);
         } else {
-            textViewEmptyNotes.setVisibility(View.VISIBLE);
+            textViewEmptyItems.setVisibility(View.VISIBLE);
         }
     }
 }

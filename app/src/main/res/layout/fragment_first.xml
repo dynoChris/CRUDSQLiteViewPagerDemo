@@ -11,13 +11,13 @@
         android:layout_height="match_parent" />
 
     <TextView
-        android:id="@+id/text_view_empty_notes"
+        android:id="@+id/text_view_empty_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
+        android:layout_centerInParent="true"
         android:fontFamily="sans-serif-light"
         android:text="@string/nothing_to_show"
         android:textColor="#999"
-        android:textSize="26sp"/>
+        android:textSize="26sp" />
+
 </RelativeLayout>

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.vadym.thetrainingproject.R;
-import com.example.vadym.thetrainingproject.database.model.FirstItem;
 import com.example.vadym.thetrainingproject.database.model.SecondItem;
 import com.example.vadym.thetrainingproject.utils.OnRecyclerLongClickListener;
 
@@ -39,7 +38,7 @@ public class AdapterRecyclerSecondItem extends RecyclerView.Adapter<AdapterRecyc
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textViewNote.setText(secondItems.get(position).getText());
+        holder.textViewItem.setText(secondItems.get(position).getText());
         holder.textViewDot.setText(Html.fromHtml("&#8226;"));
         holder.textViewTimestamp.setText(formatDate(secondItems.get(position).getTimestamp()));
     }
@@ -62,7 +61,7 @@ public class AdapterRecyclerSecondItem extends RecyclerView.Adapter<AdapterRecyc
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewNote;
+        TextView textViewItem;
         TextView textViewDot;
         TextView textViewTimestamp;
 
@@ -78,7 +77,7 @@ public class AdapterRecyclerSecondItem extends RecyclerView.Adapter<AdapterRecyc
                 }
             });
 
-            textViewNote = (TextView) itemView.findViewById(R.id.text_view_note);
+            textViewItem = (TextView) itemView.findViewById(R.id.text_view_note);
             textViewDot = (TextView) itemView.findViewById(R.id.text_view_dot);
             textViewTimestamp = (TextView) itemView.findViewById(R.id.text_view_timestamp);
         }

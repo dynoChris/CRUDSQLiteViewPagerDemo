@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View v = inflater.inflate(R.layout.dialog, null);
 
-        final EditText editTextNote = (EditText) v.findViewById(R.id.edit_text_item_dialog);
+        final EditText editTextItem = (EditText) v.findViewById(R.id.edit_text_item_dialog);
         if (needUpdate)
-            editTextNote.setText(text);
-        editTextNote.setSelection(editTextNote.getText().length()); //set cursor to end
+            editTextItem.setText(text);
+        editTextItem.setSelection(editTextItem.getText().length()); //set cursor to end
         TextView textViewTitleDialog = (TextView) v.findViewById(R.id.text_view_title_dialog);
         textViewTitleDialog.setText(needUpdate ? R.string.update_item : R.string.new_item);
 
@@ -101,14 +101,14 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerLongCli
         alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(editTextNote.getText().toString())) {
+                if (TextUtils.isEmpty(editTextItem.getText().toString())) {
                     Toast.makeText(MainActivity.this, R.string.enter_text, Toast.LENGTH_SHORT).show();
                 } else {
                     if (!needUpdate) {
-                        String text = editTextNote.getText().toString();
+                        String text = editTextItem.getText().toString();
                         addItem(text);
                     } else {
-                        String text = editTextNote.getText().toString();
+                        String text = editTextItem.getText().toString();
                         updateItem(text, position);
                     }
                     alertDialog.dismiss();

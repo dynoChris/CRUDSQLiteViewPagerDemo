@@ -38,7 +38,7 @@ public class AdapterRecyclerFirstItem extends RecyclerView.Adapter<AdapterRecycl
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textViewNote.setText(firstItems.get(position).getText());
+        holder.textViewItem.setText(firstItems.get(position).getText());
         holder.textViewDot.setText(Html.fromHtml("&#8226;"));
         holder.textViewTimestamp.setText(formatDate(firstItems.get(position).getTimestamp()));
     }
@@ -61,7 +61,7 @@ public class AdapterRecyclerFirstItem extends RecyclerView.Adapter<AdapterRecycl
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewNote;
+        TextView textViewItem;
         TextView textViewDot;
         TextView textViewTimestamp;
 
@@ -77,7 +77,7 @@ public class AdapterRecyclerFirstItem extends RecyclerView.Adapter<AdapterRecycl
                 }
             });
 
-            textViewNote = (TextView) itemView.findViewById(R.id.text_view_note);
+            textViewItem = (TextView) itemView.findViewById(R.id.text_view_note);
             textViewDot = (TextView) itemView.findViewById(R.id.text_view_dot);
             textViewTimestamp = (TextView) itemView.findViewById(R.id.text_view_timestamp);
         }
