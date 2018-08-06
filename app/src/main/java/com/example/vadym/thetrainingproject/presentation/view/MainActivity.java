@@ -1,4 +1,4 @@
-package com.example.vadym.thetrainingproject.view;
+package com.example.vadym.thetrainingproject.presentation.view;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -24,9 +24,9 @@ import android.widget.Toast;
 import com.example.vadym.thetrainingproject.R;
 import com.example.vadym.thetrainingproject.utils.OnRecyclerLongClickListener;
 import com.example.vadym.thetrainingproject.utils.ToFragmentsListener;
-import com.example.vadym.thetrainingproject.view.fragments.FirstFragment;
-import com.example.vadym.thetrainingproject.view.fragments.SecondFragment;
-import com.example.vadym.thetrainingproject.view.fragments.ThirdFragment;
+import com.example.vadym.thetrainingproject.presentation.view.fragments.FirstFragment;
+import com.example.vadym.thetrainingproject.presentation.view.fragments.SecondFragment;
+import com.example.vadym.thetrainingproject.presentation.view.fragments.ThirdFragment;
 
 import java.util.ArrayList;
 import java.util.List;

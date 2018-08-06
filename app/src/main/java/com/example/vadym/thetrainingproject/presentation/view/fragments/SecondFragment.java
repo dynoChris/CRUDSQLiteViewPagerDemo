@@ -1,4 +1,4 @@
-package com.example.vadym.thetrainingproject.view.fragments;
+package com.example.vadym.thetrainingproject.presentation.view.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -15,37 +15,36 @@ import android.widget.TextView;
 
 import com.example.vadym.thetrainingproject.R;
 import com.example.vadym.thetrainingproject.database.DatabaseHelper;
-import com.example.vadym.thetrainingproject.database.model.ThirdItem;
+import com.example.vadym.thetrainingproject.database.model.SecondItem;
 import com.example.vadym.thetrainingproject.utils.MyDividerItemDecoration;
 import com.example.vadym.thetrainingproject.utils.ToFragmentsListener;
-import com.example.vadym.thetrainingproject.view.AdapterRecyclerThirdItem;
+import com.example.vadym.thetrainingproject.presentation.view.adapters.AdapterRecyclerSecondItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ThirdFragment extends Fragment implements ToFragmentsListener {
+public class SecondFragment extends Fragment implements ToFragmentsListener {
     TextView textViewEmptyItems;
     RecyclerView rv;
-    AdapterRecyclerThirdItem adapter;
+    AdapterRecyclerSecondItem adapter;
 
     DatabaseHelper db;
-    public List<ThirdItem> thirdItems = new ArrayList<>();
+    public List<SecondItem> secondItems = new ArrayList<>();
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        adapter = new AdapterRecyclerThirdItem(context, thirdItems);
+        adapter = new AdapterRecyclerSecondItem(context, secondItems);
         db = new DatabaseHelper(context);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_third, container, false);
+        final View v = inflater.inflate(R.layout.fragment_second, container, false);
 
-
-        thirdItems.clear();
-        thirdItems.addAll((List<ThirdItem>) db.getAllItems(2));
+        secondItems.clear();
+        secondItems.addAll((List<SecondItem>) db.getAllItems(1));
 
         textViewEmptyItems = (TextView) v.findViewById(R.id.text_view_empty_items);
 
@@ -55,29 +54,30 @@ public class ThirdFragment extends Fragment implements ToFragmentsListener {
         rv.addItemDecoration(new MyDividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL, 16));
         rv.setAdapter(adapter);
 
-        toggleVisibilityView(2);
+        toggleVisibilityView(1);
 
         return v;
     }
+
 
     @Override
     public void addItem(int whichTable, String text) {
         long id = db.insertItem(whichTable, text);
 
-        ThirdItem thirdItem = (ThirdItem) db.getItem(id, whichTable);
-        thirdItems.add(0, thirdItem);
+        SecondItem secondItem = (SecondItem) db.getItem(id, whichTable);
+        secondItems.add(0, secondItem);
 
         adapter.notifyDataSetChanged();
 
-        toggleVisibilityView(2);
+        toggleVisibilityView(1);
     }
 
     @Override
     public void updateItem(int whichTable, int position, String text) {
-        long id = thirdItems.get(position).getId();
+        long id = secondItems.get(position).getId();
         db.updateItem(whichTable, id, text);
 
-        thirdItems.get(position).setText(text);
+        secondItems.get(position).setText(text);
         adapter.notifyItemChanged(position);
 
         toggleVisibilityView(whichTable);
@@ -85,20 +85,21 @@ public class ThirdFragment extends Fragment implements ToFragmentsListener {
 
     @Override
     public void deleteItem(int whichTable, int position) {
-        long id = thirdItems.get(position).getId();
+        long id = secondItems.get(position).getId();
         db.deleteItem(whichTable, id);
 
-        thirdItems.remove(position);
+        secondItems.remove(position);
         adapter.notifyItemRemoved(position);
 
         toggleVisibilityView(whichTable);
     }
 
     private void toggleVisibilityView(int whichTable) {
-        if (thirdItems.size() > 0) {
+        if (secondItems.size() > 0) {
             textViewEmptyItems.setVisibility(View.GONE);
         } else {
             textViewEmptyItems.setVisibility(View.VISIBLE);
         }
     }
+
 }

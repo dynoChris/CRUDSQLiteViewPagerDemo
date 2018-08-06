@@ -1,4 +1,4 @@
-package com.example.vadym.thetrainingproject.view;
+package com.example.vadym.thetrainingproject.presentation.view.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.vadym.thetrainingproject.R;
-import com.example.vadym.thetrainingproject.database.model.ThirdItem;
+import com.example.vadym.thetrainingproject.database.model.SecondItem;
 import com.example.vadym.thetrainingproject.utils.OnRecyclerLongClickListener;
 
 import java.text.ParseException;
@@ -18,13 +18,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class AdapterRecyclerThirdItem extends RecyclerView.Adapter<AdapterRecyclerThirdItem.MyViewHolder> {
+public class AdapterRecyclerSecondItem extends RecyclerView.Adapter<AdapterRecyclerSecondItem.MyViewHolder> {
 
-    List<ThirdItem> thirdItems;
+    List<SecondItem> secondItems;
     Context context;
 
-    public AdapterRecyclerThirdItem(Context context, List<ThirdItem> thirdItems) {
-        this.thirdItems = thirdItems;
+    public AdapterRecyclerSecondItem(Context context, List<SecondItem> secondItems) {
+        this.secondItems = secondItems;
         this.context = context;
     }
 
@@ -32,20 +32,20 @@ public class AdapterRecyclerThirdItem extends RecyclerView.Adapter<AdapterRecycl
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_item_third_recycler, parent, false);
+                .inflate(R.layout.list_item_second_recycler, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.textViewItem.setText(thirdItems.get(position).getText());
+        holder.textViewItem.setText(secondItems.get(position).getText());
         holder.textViewDot.setText(Html.fromHtml("&#8226;"));
-        holder.textViewTimestamp.setText(formatDate(thirdItems.get(position).getTimestamp()));
+        holder.textViewTimestamp.setText(formatDate(secondItems.get(position).getTimestamp()));
     }
 
     @Override
     public int getItemCount() {
-        return thirdItems.size();
+        return secondItems.size();
     }
 
     private String formatDate(String dateStr) {
